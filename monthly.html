@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Achievements</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header / Navigation -->
+        <header class="live-indicator">
+            <div class="top-nav">
+                <a href="index.html" class="back-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Back to Daily View
+                </a>
+            </div>
+
+            <div class="date-section">
+                <div class="date-nav">
+                    <button id="prev-month" class="nav-btn" title="Previous Month">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="date-display">
+                        <h1 id="current-month-display">This Month</h1>
+                        <span class="subtitle" id="month-range-display">October 2023</span>
+                    </div>
+                    <button id="next-month" class="nav-btn" title="Next Month">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button id="this-month-btn" class="today-btn hidden">Jump to This Month</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card completed">
+                    <span class="stat-label">Completed</span>
+                    <span class="stat-number" id="count-completed">0</span>
+                </div>
+                <div class="stat-card in-progress">
+                    <span class="stat-label">In Progress</span>
+                    <span class="stat-number" id="count-in-progress">0</span>
+                </div>
+                <div class="stat-card not-started">
+                    <span class="stat-label">Not Started</span>
+                    <span class="stat-number" id="count-not-started">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <button class="tab-btn active" data-tab="Completed">Completed</button>
+            <button class="tab-btn" data-tab="In Progress">In Progress</button>
+            <button class="tab-btn" data-tab="Not Started">Not Started</button>
+        </div>
+
+        <!-- Task List -->
+        <div class="task-list-container">
+            <div class="list-header">
+                <span class="col-name">Task</span>
+                <span class="col-date">Date</span>
+                <span class="col-status">Status</span>
+            </div>
+            <ul id="task-list">
+                <!-- Tasks will be injected here -->
+            </ul>
+            <div id="empty-state" class="empty-state hidden">
+                <p>No tasks found for this category.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="data-manager.js"></script>
+    <script src="monthly-script.js"></script>
+</body>
+
+</html>
